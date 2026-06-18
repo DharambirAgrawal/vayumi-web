@@ -129,6 +129,9 @@ export const trustBadges = [
 ];
 
 /* --- FAQ --- */
+export const faqIntro =
+  "Straight answers about what stays on your phone, and what never leaves it.";
+
 export const faq = [
   {
     q: "Is my data really never uploaded?",

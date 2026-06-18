@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 
 export type OrbVariant = "brand" | "teal" | "cold";
@@ -29,12 +29,21 @@ const VARIANTS: Record<
   },
 };
 
+// A liquid blob never settles on a perfect circle — it idles between a
+// handful of soft, asymmetric border-radius shapes.
+const BLOB_SHAPES = [
+  "48% 52% 53% 47% / 50% 49% 51% 50%",
+  "53% 47% 48% 52% / 47% 53% 49% 51%",
+  "50% 50% 47% 53% / 53% 47% 50% 50%",
+  "48% 52% 53% 47% / 50% 49% 51% 50%",
+];
+
 type Props = {
   size?: number;
   variant?: OrbVariant;
   /** 0 = dim/dormant, 1 = fully alive */
   intensity?: number;
-  /** ambient breathing/rotation (idle hero state) */
+  /** ambient breathing/morphing (idle hero state) */
   alive?: boolean;
   /** content layered over the orb (icons, cards) during morph reveals */
   children?: ReactNode;
@@ -50,81 +59,73 @@ export function AnimatedOrb({
   className = "",
 }: Props) {
   const v = VARIANTS[variant];
+  const reduced = useReducedMotion();
+  const animated = alive && !reduced;
 
   return (
     <motion.div
       className={`relative ${className}`}
       style={{ width: size, height: size }}
-      animate={{ scale: 0.9 + intensity * 0.1 }}
+      animate={{ scale: 0.92 + intensity * 0.08 }}
       transition={{ type: "spring", damping: 18, stiffness: 55, mass: 1 }}
     >
-      {/* Outer glow halo */}
-      <motion.div
+      {/* Atmospheric halo — large, very soft, dissolves into the page
+          instead of leaving a hard disc edge. */}
+      <div
         aria-hidden
         className={`absolute inset-0 rounded-full ${alive ? "animate-breathe" : ""}`}
         style={{
-          boxShadow: v.glow,
           background: v.core,
-          filter: "blur(28px)",
-          opacity: 0.35 + intensity * 0.4,
-          transform: "scale(1.25)",
+          filter: "blur(54px)",
+          opacity: 0.26 + intensity * 0.3,
+          transform: "scale(1.7)",
         }}
-        transition={{ duration: 0.8 }}
       />
 
-      {/* Rotating gradient ring */}
-      <div
+      {/* Liquid glass body — a softly morphing blob, not a static circle */}
+      <motion.div
         aria-hidden
-        className={`absolute -inset-3 rounded-full ${alive ? "animate-spin-slow" : ""}`}
-        style={{
-          background: `conic-gradient(from 0deg, transparent 0%, ${v.ring} 25%, transparent 55%, ${v.ringSoft} 80%, transparent 100%)`,
-          WebkitMask:
-            "radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px))",
-          mask: "radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px))",
-          opacity: 0.25 + intensity * 0.5,
-        }}
-      />
-
-      {/* Counter-rotating dashed ring */}
-      <div
-        aria-hidden
-        className="absolute -inset-1 rounded-full"
-        style={{
-          border: `1px dashed ${v.ring}`,
-          opacity: 0.12 + intensity * 0.18,
-          animation: alive ? "spin-slow 30s linear infinite reverse" : "none",
-        }}
-      />
-
-      {/* Glass core */}
-      <div
         className="absolute inset-0 overflow-hidden rounded-full border border-white/10"
         style={{
           background: v.core,
-          backdropFilter: "blur(14px)",
-          WebkitBackdropFilter: "blur(14px)",
+          backdropFilter: "blur(16px) saturate(140%)",
+          WebkitBackdropFilter: "blur(16px) saturate(140%)",
+          boxShadow: `inset 0 1px 1px rgba(255,255,255,0.16), inset 0 -18px 36px rgba(0,0,0,0.32), ${v.glow}`,
         }}
+        animate={animated ? { borderRadius: BLOB_SHAPES } : undefined}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
       >
-        {/* top-left shimmer highlight */}
+        {/* Internal swirl — a slow, contained current of light, like liquid
+            moving inside glass rather than a ring orbiting it. */}
         <div
           aria-hidden
-          className="absolute -left-1/4 -top-1/4 h-2/3 w-2/3 rounded-full"
+          className={`absolute -inset-1/3 ${alive ? "animate-spin-slow" : ""}`}
           style={{
-            background:
-              "radial-gradient(circle, rgba(255,255,255,0.5) 0%, transparent 70%)",
-            opacity: 0.4 + intensity * 0.3,
+            background: `conic-gradient(from 120deg, transparent 0%, color-mix(in srgb, ${v.ringSoft} 35%, transparent) 30%, transparent 55%, color-mix(in srgb, ${v.ring} 30%, transparent) 85%, transparent 100%)`,
+            opacity: 0.45 + intensity * 0.3,
           }}
         />
-        {/* inner soft glow */}
-        <div
+
+        {/* Specular sheen — a drifting highlight, like light catching the
+            curve of glass, rather than a fixed glossy-sphere blob. */}
+        <motion.div
           aria-hidden
-          className="absolute inset-0 rounded-full"
+          className="absolute h-2/5 w-2/5 rounded-full"
           style={{
-            background:
-              "radial-gradient(circle at 50% 55%, rgba(255,255,255,0.12) 0%, transparent 60%)",
+            background: "radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 72%)",
+            filter: "blur(10px)",
+            top: "8%",
+            left: "12%",
+            opacity: 0.5 + intensity * 0.3,
           }}
+          animate={animated ? { x: [0, 16, -6, 0], y: [0, 10, -8, 0] } : {}}
+          transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
         />
-      </div>
+
+        {/* Fine grain — breaks up the gradient so the surface reads as
+            material, not a flat digital render. */}
+        <div aria-hidden className="grain-overlay absolute inset-0" />
+      </motion.div>
 
       {/* Morph overlay content */}
       {children ? (

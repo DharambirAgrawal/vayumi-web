@@ -29,26 +29,38 @@ type ParticleParams = {
   leakY: number;
   size: number;
   label?: string;
+  labelOrder: number;
 };
 
 const r1 = (n: number) => Math.round(n); // integers → no SSR/client float drift
 
 function buildParticles(): ParticleParams[] {
+  let labelOrder = 0;
   return Array.from({ length: COUNT }, (_, i) => {
     const angle = i * GOLDEN;
     const radius = 130 + (i % 6) * 26;
     const orbitX = Math.cos(angle) * radius;
     const orbitY = Math.sin(angle) * radius;
     const spread = (((i * 41) % 100) - 50) / 50; // -1..1 deterministic
+    const hasLabel = i % 5 === 0;
+    const order = labelOrder;
+    const label = hasLabel
+      ? leak.particleLabels[labelOrder % leak.particleLabels.length]
+      : undefined;
+    if (hasLabel) labelOrder++;
     return {
       orbitX: r1(orbitX),
       orbitY: r1(orbitY),
       expandX: r1(orbitX * 1.35),
       expandY: r1(orbitY * 1.35),
-      leakX: r1(orbitX * 0.3 + spread * 280),
-      leakY: -480 - (i % 7) * 60, // stream upward toward "servers"
+      leakX: r1(orbitX * 0.3 + spread * 220),
+      // kept inside the viewport's upper half — the old -480..-1140 range
+      // pushed labeled particles past the sticky container's
+      // overflow-hidden edge, clipping their captions.
+      leakY: -170 - (i % 7) * 22,
       size: 3 + (i % 4),
-      label: i % 5 === 0 ? leak.particleLabels[(i / 5) % leak.particleLabels.length] : undefined,
+      label,
+      labelOrder: order,
     };
   });
 }
@@ -60,30 +72,34 @@ function Particle({
   p: ParticleParams;
   progress: MotionValue<number>;
 }) {
-  // orbit (0) → expand (.2) → leak away (.42) → snap home (.58) → absorbed
-  const x = useTransform(progress, [0, 0.2, 0.42, 0.58], [
+  // orbit (0) → expand (.2) → leak away (.38) → snap home by .42 — fully
+  // absorbed right as the "vault" phase (and its headline) takes over, so
+  // nothing is still in flight across the text.
+  const x = useTransform(progress, [0, 0.2, 0.38, 0.42], [
     p.orbitX,
     p.expandX,
     p.leakX,
     0,
   ]);
-  const y = useTransform(progress, [0, 0.2, 0.42, 0.58], [
+  const y = useTransform(progress, [0, 0.2, 0.38, 0.42], [
     p.orbitY,
     p.expandY,
     p.leakY,
     0,
   ]);
+  // non-zero at progress 0 so the orbit reads as ambient atmosphere around
+  // the resting hero orb, not something that only appears once you scroll
   const opacity = useTransform(
     progress,
-    [0, 0.05, 0.42, 0.56, 0.62],
-    [0, 0.85, 0.95, 1, 0]
+    [0, 0.05, 0.36, 0.4, 0.42],
+    [0.4, 0.85, 0.95, 0.35, 0]
   );
-  const scale = useTransform(progress, [0, 0.55, 0.6], [1, 1.1, 0.2]);
+  const scale = useTransform(progress, [0, 0.36, 0.42], [1, 1.1, 0.2]);
 
   // brand glow during orbit/leak → snaps to cold during leak peak → home
   const bg = useTransform(
     progress,
-    [0, 0.25, 0.42, 0.5],
+    [0, 0.22, 0.38, 0.42],
     [
       "rgba(130,167,255,0.9)",
       "rgba(130,167,255,0.7)",
@@ -92,9 +108,12 @@ function Particle({
     ]
   );
 
+  // staggered per label (instead of all six firing in the same window) so
+  // captions don't pile up on top of one another mid-flight
+  const labelStart = 0.2 + p.labelOrder * 0.014;
   const labelOpacity = useTransform(
     progress,
-    [0.22, 0.3, 0.4, 0.45],
+    [labelStart, labelStart + 0.035, labelStart + 0.09, labelStart + 0.12],
     [0, 1, 1, 0]
   );
 

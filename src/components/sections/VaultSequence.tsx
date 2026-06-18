@@ -9,7 +9,15 @@ import {
   useTransform,
 } from "framer-motion";
 import { useRef, useState } from "react";
-import { Phone, MessageSquare, MapPin, Search, Bell, Lock } from "lucide-react";
+import {
+  Phone,
+  MessageSquare,
+  MapPin,
+  Search,
+  Bell,
+  Lock,
+  ShieldCheck,
+} from "lucide-react";
 import { AnimatedOrb, type OrbVariant } from "@/components/ui/AnimatedOrb";
 import { ParticleField } from "@/components/ui/ParticleField";
 import { GlassButton } from "@/components/ui/GlassButton";
@@ -188,27 +196,30 @@ export function VaultSequence() {
         <div className="relative flex items-center justify-center">
           <ParticleField progress={scrollYProgress} />
 
-          {/* vault iris ring */}
+          {/* vault iris — soft converging rings of light, like a camera
+              aperture closing, rather than a crisp HUD ring */}
           <motion.div
             aria-hidden
-            className="absolute rounded-full border-2"
+            className="absolute rounded-full"
             style={{
               width: 420,
               height: 420,
-              borderColor: "var(--brand-primary)",
+              border: "2px solid var(--brand-primary)",
+              filter: "blur(1.5px)",
               scale: irisScale,
               opacity: irisOpacity,
               boxShadow:
-                "0 0 60px rgba(130,167,255,0.3), inset 0 0 60px rgba(130,167,255,0.15)",
+                "0 0 80px rgba(130,167,255,0.35), inset 0 0 80px rgba(130,167,255,0.18)",
             }}
           />
           <motion.div
             aria-hidden
-            className="absolute rounded-full border border-dashed"
+            className="absolute rounded-full"
             style={{
-              width: 470,
-              height: 470,
-              borderColor: "var(--brand-tertiary)",
+              width: 480,
+              height: 480,
+              border: "1px solid color-mix(in srgb, var(--brand-tertiary) 45%, transparent)",
+              filter: "blur(3px)",
               scale: irisScale,
               opacity: irisOpacity,
             }}
@@ -251,6 +262,20 @@ export function VaultSequence() {
                     <FeatureGlyph id={features[feature].id} />
                   </motion.div>
                 </AnimatePresence>
+              )}
+
+              {/* recap payoff — the orb closes the story holding the same
+                  "secured" mark the vault scene introduced, instead of
+                  ending the sequence as a bare sphere */}
+              {phase === "recap" && (
+                <motion.div
+                  className="absolute inset-0 flex items-center justify-center"
+                  initial={{ opacity: 0, scale: 0.7 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.15 }}
+                >
+                  <ShieldCheck className="h-10 w-10 text-white" strokeWidth={1.6} />
+                </motion.div>
               )}
             </AnimatedOrb>
           </motion.div>
@@ -364,6 +389,25 @@ export function VaultSequence() {
               </h2>
               <p className="mt-3 text-sm text-text-secondary">{recap.sub}</p>
             </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* a faint downward thread bridges the empty stretch between the
+            orb and the scroll cue, instead of leaving it visually dead */}
+        <AnimatePresence>
+          {phase === "open" && (
+            <motion.div
+              aria-hidden
+              key="thread"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute bottom-20 left-1/2 h-28 w-px -translate-x-1/2"
+              style={{
+                background:
+                  "linear-gradient(to bottom, transparent, rgba(130,167,255,0.4), rgba(130,167,255,0.1))",
+              }}
+            />
           )}
         </AnimatePresence>
 
