@@ -8,7 +8,7 @@ export const site = {
   tagline: "The AI that keeps your secrets",
   description:
     "Vayumi is the on-device AI assistant that listens, remembers, and gets things done — voice, meetings, and reminders — without a single byte ever leaving your phone.",
-  email: "hello@vayumi.app",
+  email: "hello@vayumi.com",
 };
 
 /* --- Scene 1: Open --- */

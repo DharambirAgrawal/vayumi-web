@@ -20,7 +20,7 @@ const fraunces = Fraunces({
   display: "swap",
 });
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://vayumi.app";
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://vayumi.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),

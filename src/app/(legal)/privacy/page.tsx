@@ -16,7 +16,7 @@ export default function PrivacyPage() {
       <Navbar />
       <LegalContent
         title="Privacy Policy"
-        lastUpdated="June 14, 2026"
+        lastUpdated="June 18, 2026"
         intro={`${site.name} is built around a simple idea: your AI should keep your secrets. This policy explains what little information we collect through this website and the upcoming app, why we collect it, and how it's protected.`}
       >
         <LegalSection heading="The short version">
@@ -90,8 +90,15 @@ export default function PrivacyPage() {
         <LegalSection heading="Your rights">
           <p>
             You can ask us to access, correct, or delete the information we
-            hold about you at any time. To do so, or if you have any other
-            privacy question, email us at{" "}
+            hold about you at any time. Once you have an account, the
+            fastest way is to delete it directly from within the app — open
+            Settings, tap your profile, then Delete Account — which
+            permanently removes your account and the data tied to it. If you
+            no longer have the
+            app installed, see our{" "}
+            <a href="/delete-account">account deletion page</a> for how to
+            request deletion without it. For any other privacy question,
+            email us at{" "}
             <a href={`mailto:${site.email}`}>{site.email}</a>{" "}
             and we&rsquo;ll take care of it.
           </p>
