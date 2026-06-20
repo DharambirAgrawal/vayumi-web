@@ -1,22 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Fraunces } from "next/font/google";
+import { Hanken_Grotesk, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/copy";
-import { AuroraBackground } from "@/components/ui/AuroraBackground";
 
-const geist = Geist({
-  variable: "--font-geist",
+const sans = Hanken_Grotesk({
+  variable: "--font-sans",
   subsets: ["latin"],
-  weight: "variable",
   display: "swap",
 });
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const display = Instrument_Serif({
+  variable: "--font-display",
   subsets: ["latin"],
-  weight: "variable",
+  weight: "400",
   style: ["normal", "italic"],
-  axes: ["SOFT", "opsz"],
   display: "swap",
 });
 
@@ -61,7 +58,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#050506",
+  themeColor: "#FBFAF9",
   width: "device-width",
   initialScale: 1,
 };
@@ -88,10 +85,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geist.variable} ${fraunces.variable} h-full antialiased`}
+      className={`${sans.variable} ${display.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-bg-base text-text-primary">
-        <AuroraBackground />
+      <body className="min-h-full flex flex-col bg-paper text-ink">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

@@ -32,12 +32,10 @@ export default function DeleteAccountPage() {
 
         <LegalSection heading="If you no longer have the app">
           <p>
-            Email us at{" "}
-            <a href={`mailto:${site.email}?subject=Delete my Vayumi account`}>
-              {site.email}
-            </a>{" "}
-            from the email address on your account and ask us to delete it.
-            We&rsquo;ll verify it&rsquo;s you and confirm once it&rsquo;s done.
+            Send us a message through our{" "}
+            <a href="/contact">contact form</a> using the email address on your
+            account, and ask us to delete it. We&rsquo;ll verify it&rsquo;s you
+            and confirm once it&rsquo;s done.
           </p>
         </LegalSection>
 
@@ -54,9 +52,8 @@ export default function DeleteAccountPage() {
         <LegalSection heading="Questions">
           <p>
             See our <a href="/privacy">Privacy Policy</a> for more on what we
-            collect and why, or email{" "}
-            <a href={`mailto:${site.email}`}>{site.email}</a> with any
-            questions.
+            collect and why, or reach us through our{" "}
+            <a href="/contact">contact form</a> with any questions.
           </p>
         </LegalSection>
       </LegalContent>

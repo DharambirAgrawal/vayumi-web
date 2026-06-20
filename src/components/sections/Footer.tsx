@@ -1,33 +1,28 @@
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
-import { footer, site } from "@/lib/copy";
+import { footer } from "@/lib/copy";
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-glass-border px-6 py-16">
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-grid" />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-1/2 top-0 -z-10 h-[280px] w-[640px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-25 blur-3xl"
-        style={{ background: "var(--gradient-orb)" }}
-      />
-
-      <div className="mx-auto grid max-w-6xl gap-12 sm:grid-cols-2 sm:gap-8 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+    <footer className="border-t border-border px-6 py-16">
+      <div className="mx-auto grid max-w-6xl gap-12 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr]">
         <div className="max-w-xs">
           <Logo />
-          <p className="mt-4 text-sm leading-relaxed text-text-tertiary">
+          <p className="mt-4 text-sm leading-relaxed text-ink-2">
             {footer.tagline}
           </p>
         </div>
 
         <nav className="flex flex-col gap-3">
-          <span className="text-xs font-semibold uppercase tracking-widest text-text-tertiary">
+          <span className="text-xs font-semibold uppercase tracking-widest text-ink-3">
             Product
           </span>
           {footer.links.product.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-sm text-text-secondary transition-colors hover:text-text-primary"
+              className="text-sm text-ink-2 transition-colors hover:text-ink"
             >
               {l.label}
             </a>
@@ -35,39 +30,40 @@ export function Footer() {
         </nav>
 
         <nav className="flex flex-col gap-3">
-          <span className="text-xs font-semibold uppercase tracking-widest text-text-tertiary">
+          <span className="text-xs font-semibold uppercase tracking-widest text-ink-3">
             Legal
           </span>
           {footer.links.legal.map((l) => (
-            <a
+            <Link
               key={l.href}
               href={l.href}
-              className="text-sm text-text-secondary transition-colors hover:text-text-primary"
+              className="text-sm text-ink-2 transition-colors hover:text-ink"
             >
               {l.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
         <div className="flex flex-col gap-3">
-          <span className="text-xs font-semibold uppercase tracking-widest text-text-tertiary">
+          <span className="text-xs font-semibold uppercase tracking-widest text-ink-3">
             Get in touch
           </span>
-          <a
-            href={`mailto:${site.email}`}
-            className="text-sm text-text-secondary transition-colors hover:text-text-primary"
+          <Link
+            href="/contact"
+            className="group inline-flex w-fit items-center gap-1.5 text-sm font-medium text-coral-press transition-colors hover:text-coral-hover"
           >
-            {site.email}
-          </a>
-          <p className="mt-1 text-sm leading-relaxed text-text-tertiary">
-            Questions, feedback, or press — we read everything.
+            Contact us
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </Link>
+          <p className="mt-1 text-sm leading-relaxed text-ink-2">
+            Questions, feedback, or press — send a message and we read everything.
           </p>
         </div>
       </div>
 
-      <div className="glass mx-auto mt-12 flex max-w-6xl flex-col gap-2 rounded-2xl px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-xs text-text-tertiary">{footer.copyright}</p>
-        <p className="text-xs text-text-tertiary">
+      <div className="mx-auto mt-14 flex max-w-6xl flex-col gap-2 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-xs text-ink-3">{footer.copyright}</p>
+        <p className="text-xs text-ink-3">
           Built for iOS &amp; Android · On-device by design
         </p>
       </div>

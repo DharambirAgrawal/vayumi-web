@@ -1,28 +1,27 @@
 import Image from "next/image";
 
-export function Logo({ className = "" }: { className?: string }) {
+export function Logo({
+  className = "",
+  href = "/#top",
+}: {
+  className?: string;
+  href?: string;
+}) {
   return (
     <a
-      href="#top"
+      href={href}
       className={`group inline-flex items-center gap-2.5 ${className}`}
       aria-label="Vayumi home"
     >
-      <span className="relative inline-flex h-7 w-7 items-center justify-center transition-transform duration-300 group-hover:scale-110">
-        <span
-          aria-hidden
-          className="absolute inset-0 rounded-full opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-70"
-          style={{ background: "var(--brand-gold)" }}
-        />
-        <Image
-          src="/brand/vayumi-mark.png"
-          alt="Vayumi"
-          width={28}
-          height={28}
-          priority
-          className="relative h-7 w-7 object-contain"
-        />
-      </span>
-      <span className="font-serif text-xl tracking-tight text-text-primary">
+      <Image
+        src="/brand/vayumi-mark.png"
+        alt="Vayumi"
+        width={26}
+        height={26}
+        priority
+        className="h-[26px] w-[26px] object-contain transition-transform duration-300 group-hover:rotate-45"
+      />
+      <span className="font-display text-2xl leading-none tracking-tight text-ink">
         Vayumi
       </span>
     </a>

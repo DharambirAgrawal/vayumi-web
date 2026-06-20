@@ -100,8 +100,8 @@ export default function TermsPage() {
 
         <LegalSection heading="Contact us">
           <p>
-            Questions about these terms? Email us at{" "}
-            <a href={`mailto:${site.email}`}>{site.email}</a>.
+            Questions about these terms? Reach us through our{" "}
+            <a href="/contact">contact form</a>.
           </p>
         </LegalSection>
       </LegalContent>

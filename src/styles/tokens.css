@@ -1,107 +1,59 @@
 /* ============================================================================
    VAYUMI — DESIGN TOKENS (single source of truth)
    ----------------------------------------------------------------------------
-   Change a brand color, glow, or gradient HERE and it propagates everywhere.
-   These raw values are mapped into Tailwind utilities in globals.css via
-   `@theme inline`, and used directly for gradients/glows/shadows.
-   Mirrors the Vayumi mobile app theme so web + app share one identity.
+   Warm, editorial, light-first. One confident warm color (coral), a warm sand
+   accent, and a warm neutral scale that carries ~90% of every screen. Coral is
+   a spice, never the background. Mirrors the Vayumi brand pack.
    ========================================================================== */
 
 :root {
-  /* --- Backgrounds (deep space → elevated glass) --- */
-  --bg-base: #050506;
-  --bg-primary: #07080a;
-  --bg-secondary: #0d0e11;
-  --bg-tertiary: #13151a;
-  --bg-elevated: #171a20;
+  /* --- Warm neutrals (the page lives here) --- */
+  --paper: #fbfaf9;        /* page background */
+  --surface: #ffffff;      /* cards, sheets */
+  --surface-2: #f5f3f1;    /* subtle raised / inputs */
+  --border: #e7e3e0;
+  --border-strong: #d6d1cd;
 
-  /* --- Brand (the orb's blue → teal identity) --- */
-  --brand-primary: #82a7ff;
-  --brand-secondary: #5e7ecf;
-  --brand-tertiary: #47bfa1; /* teal — meeting mode accent */
-  --brand-light: #9cb9ff;
-  --brand-deep: #1d2740;
-  --brand-gold: #f5a623; /* the Vayumi logo mark color */
+  --ink: #1e1b1a;          /* primary text */
+  --ink-2: #5c5650;        /* secondary text */
+  --ink-3: #847d78;        /* tertiary / labels */
 
-  /* --- Text --- */
-  --text-primary: #f5f5f7;
-  --text-secondary: rgba(245, 245, 247, 0.65);
-  --text-tertiary: rgba(245, 245, 247, 0.38);
-  --text-quaternary: rgba(245, 245, 247, 0.22);
+  /* --- Warm near-black (for inverted sections) --- */
+  --ink-900: #161413;
+  --ink-800: #1f1c1b;
+  --ink-700: #2a2624;
+  --on-dark: #f5f2f0;      /* text on dark sections */
+  --on-dark-2: #b8b0ab;
 
-  /* --- Status --- */
-  --success: #34d399;
-  --warning: #fbbf24;
-  --error: #f87171;
-  --info: #60a5fa;
+  /* --- Brand: coral --- */
+  --coral: #ee6a5e;        /* the mark, large fills, accents */
+  --coral-hover: #e14e40;  /* button fills / hover */
+  --coral-press: #c13d31;  /* accessible coral text/links on white */
+  --coral-deep: #9c3127;
+  --coral-subtle: #fdeeec; /* lightest tint — hover backgrounds */
+  --coral-100: #fbd9d4;
+  --on-coral: #ffffff;
 
-  /* --- "Cold" palette — used ONLY in the data-leak scene --- */
-  --cold-bg: #14161b;
-  --cold-surface: #1c1f26;
-  --cold-text: #6b7280;
-  --cold-text-strong: rgba(245, 245, 247, 0.62); /* legible headline/body over the cold wash */
-  --cold-accent: #b4566a; /* muted, uncomfortable red */
-  --cold-accent-soft: rgba(180, 86, 106, 0.4);
-  --cold-label: #e2828f; /* brighter red for readable floating data labels */
+  /* --- Accent: warm sand (small highlights only) --- */
+  --sand: #f2d9a8;
+  --sand-soft: #fbf1dc;
+  --sand-deep: #8a6a2e;
 
-  /* --- Glass overlays (frosted layers) --- */
-  --glass-white-subtle: rgba(255, 255, 255, 0.06);
-  --glass-white: rgba(255, 255, 255, 0.08);
-  --glass-white-mid: rgba(255, 255, 255, 0.12);
-  --glass-white-strong: rgba(255, 255, 255, 0.18);
-  --glass-white-prominent: rgba(255, 255, 255, 0.22);
-  --glass-border: rgba(255, 255, 255, 0.12);
-  --glass-border-strong: rgba(255, 255, 255, 0.22);
-  --glass-border-interactive: rgba(130, 167, 255, 0.55);
+  /* --- Status (off-brand by design) --- */
+  --success: #2e8b6f;
+  --warning: #c98a14;
+  --danger: #c8372d;
+  --info: #3e7cb1;
 
-  /* --- Gradients --- */
-  --gradient-brand: linear-gradient(135deg, #5e7ecf 0%, #82a7ff 50%, #9cb9ff 100%);
-  --gradient-brand-text: linear-gradient(120deg, #9cb9ff 0%, #82a7ff 45%, #47bfa1 100%);
-  --gradient-orb: radial-gradient(
-    circle at 35% 30%,
-    rgba(156, 185, 255, 0.95) 0%,
-    rgba(130, 167, 255, 0.7) 30%,
-    rgba(94, 126, 207, 0.5) 60%,
-    rgba(29, 39, 64, 0.2) 100%
-  );
-  --gradient-orb-teal: radial-gradient(
-    circle at 35% 30%,
-    rgba(110, 231, 200, 0.9) 0%,
-    rgba(71, 191, 161, 0.65) 35%,
-    rgba(52, 211, 153, 0.4) 65%,
-    rgba(15, 40, 35, 0.2) 100%
-  );
-  --gradient-orb-cold: radial-gradient(
-    circle at 35% 30%,
-    rgba(140, 150, 165, 0.55) 0%,
-    rgba(90, 98, 112, 0.4) 40%,
-    rgba(40, 44, 52, 0.3) 100%
-  );
+  /* --- Shadows (warm, soft, low — premium not heavy) --- */
+  --shadow-sm: 0 1px 2px rgba(30, 27, 26, 0.04), 0 1px 1px rgba(30, 27, 26, 0.03);
+  --shadow-md: 0 8px 24px -8px rgba(30, 27, 26, 0.12), 0 2px 6px rgba(30, 27, 26, 0.05);
+  --shadow-lg: 0 24px 60px -16px rgba(30, 27, 26, 0.18), 0 8px 20px -8px rgba(30, 27, 26, 0.08);
+  --shadow-coral: 0 16px 40px -12px rgba(225, 78, 64, 0.4);
 
-  /* --- Icon badge fills (FeatureGrid etc.) — soft gradient + glass edge --- */
-  --gradient-badge-brand: linear-gradient(
-    135deg,
-    rgba(130, 167, 255, 0.38) 0%,
-    rgba(94, 126, 207, 0.12) 100%
-  );
-  --gradient-badge-teal: linear-gradient(
-    135deg,
-    rgba(110, 231, 200, 0.38) 0%,
-    rgba(52, 211, 153, 0.12) 100%
-  );
-  --gradient-badge-gold: linear-gradient(
-    135deg,
-    rgba(245, 166, 35, 0.38) 0%,
-    rgba(245, 166, 35, 0.1) 100%
-  );
-
-  /* --- Glows (box-shadow recipes) --- */
-  --glow-brand: 0 0 80px rgba(130, 167, 255, 0.45), 0 0 32px rgba(130, 167, 255, 0.3);
-  --glow-brand-soft: 0 0 60px rgba(130, 167, 255, 0.22);
-  --glow-meeting: 0 0 70px rgba(52, 211, 153, 0.4);
-  --glow-cold: 0 0 50px rgba(180, 86, 106, 0.18);
-
-  /* --- Shadows (liquid glass depth) --- */
-  --shadow-glass: 0 4px 24px rgba(0, 0, 0, 0.35);
-  --shadow-glass-elevated: 0 12px 48px rgba(0, 0, 0, 0.45);
+  /* --- Radii --- */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
 }

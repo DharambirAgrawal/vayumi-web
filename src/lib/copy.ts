@@ -8,7 +8,24 @@ export const site = {
   tagline: "The AI that keeps your secrets",
   description:
     "Vayumi is the on-device AI assistant that listens, remembers, and gets things done — voice, meetings, and reminders — without a single byte ever leaving your phone.",
-  email: "hello@vayumi.com",
+};
+
+/* --- Contact (form, not a public email — keeps inboxes private + spam-free) --- */
+export const contact = {
+  eyebrow: "Contact",
+  heading: "Get in touch",
+  sub: "Questions, feedback, press, or a privacy request — send us a message and we read every one.",
+  fields: {
+    name: "Your name",
+    email: "you@example.com",
+    message: "How can we help?",
+  },
+  cta: "Send message",
+  ctaPending: "Sending…",
+  success: "Thanks — your message is on its way. We'll get back to you soon.",
+  errorGeneric: "Something went wrong. Please try again.",
+  errorValidation: "Please add your email and a short message.",
+  privacyNote: "We only use what you send to reply. Nothing is shared or sold.",
 };
 
 /* --- Scene 1: Open --- */
@@ -38,7 +55,7 @@ export const leak = {
 /* --- Scene 3: The Flip --- */
 export const flip = {
   headline: "Meet Vayumi.\nNothing leaves. Ever.",
-  sub: "The same data, pulled back home and locked down. A local AI brain. AES-256 encryption. Your phone is the only server it needs.",
+  sub: "A local AI brain and AES-256 encryption mean your voice, meetings, and notes are processed and stored right where they belong. Your phone is the only server Vayumi needs.",
   lockLabel: "ENCRYPTED · ON-DEVICE",
 };
 
@@ -85,12 +102,12 @@ export const recap = {
 /* --- Scene 6: Waitlist --- */
 export const waitlist = {
   eyebrow: "Early access",
-  headline: "Get early access to the vault.",
-  sub: "Be first to try the assistant that finally keeps your data where it belongs — on your phone.",
+  headline: "Be first on your phone",
+  sub: "Join the waitlist for the assistant that finally keeps your data where it belongs — and get launch pricing before anyone else.",
   placeholder: "you@example.com",
   cta: "Join the waitlist",
   ctaPending: "Joining…",
-  success: "You're on the list. Welcome to the vault.",
+  success: "You're on the list. We'll be in touch before launch.",
   errorGeneric: "Something went wrong. Please try again.",
   errorEmail: "Please enter a valid email address.",
   privacyNote: "No spam. We'll only email you about launch.",
@@ -160,13 +177,14 @@ export const footer = {
   tagline: "The AI that keeps your secrets.",
   links: {
     product: [
-      { label: "Features", href: "#features" },
-      { label: "How it works", href: "#how" },
-      { label: "FAQ", href: "#faq" },
+      { label: "Features", href: "/#features" },
+      { label: "How it works", href: "/#how" },
+      { label: "FAQ", href: "/#faq" },
     ],
     legal: [
       { label: "Privacy Policy", href: "/privacy" },
       { label: "Terms of Service", href: "/terms" },
+      { label: "Delete account", href: "/delete-account" },
     ],
   },
   copyright: `© ${new Date().getFullYear()} Vayumi. All rights reserved.`,
@@ -175,9 +193,9 @@ export const footer = {
 /* --- Navbar --- */
 export const nav = {
   links: [
-    { label: "How it works", href: "#how" },
-    { label: "Features", href: "#features" },
-    { label: "FAQ", href: "#faq" },
+    { label: "How it works", href: "/#how" },
+    { label: "Features", href: "/#features" },
+    { label: "FAQ", href: "/#faq" },
   ],
   cta: "Join waitlist",
 };

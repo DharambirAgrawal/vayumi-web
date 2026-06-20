@@ -1,8 +1,9 @@
 import { Navbar } from "@/components/sections/Navbar";
-import { VaultSequence } from "@/components/sections/VaultSequence";
+import { Hero } from "@/components/sections/Hero";
 import { TrustStrip } from "@/components/sections/TrustStrip";
-import { HowItWorks } from "@/components/sections/HowItWorks";
 import { FeatureGrid } from "@/components/sections/FeatureGrid";
+import { PrivacyPledge } from "@/components/sections/PrivacyPledge";
+import { HowItWorks } from "@/components/sections/HowItWorks";
 import { WaitlistSection } from "@/components/sections/WaitlistSection";
 import { FAQ } from "@/components/sections/FAQ";
 import { Footer } from "@/components/sections/Footer";
@@ -11,11 +12,12 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main id="top" className="flex-1">
-        <VaultSequence />
+      <main className="flex-1">
+        <Hero />
         <TrustStrip />
-        <HowItWorks />
         <FeatureGrid />
+        <PrivacyPledge />
+        <HowItWorks />
         <WaitlistSection />
         <FAQ />
       </main>

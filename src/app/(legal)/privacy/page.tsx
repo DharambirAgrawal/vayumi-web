@@ -98,8 +98,8 @@ export default function PrivacyPage() {
             app installed, see our{" "}
             <a href="/delete-account">account deletion page</a> for how to
             request deletion without it. For any other privacy question,
-            email us at{" "}
-            <a href={`mailto:${site.email}`}>{site.email}</a>{" "}
+            reach us through our{" "}
+            <a href="/contact">contact form</a>{" "}
             and we&rsquo;ll take care of it.
           </p>
         </LegalSection>
@@ -125,8 +125,8 @@ export default function PrivacyPage() {
 
         <LegalSection heading="Contact us">
           <p>
-            Questions about this policy or your data? Reach us anytime at{" "}
-            <a href={`mailto:${site.email}`}>{site.email}</a>.
+            Questions about this policy or your data? Reach us anytime through
+            our <a href="/contact">contact form</a>.
           </p>
         </LegalSection>
       </LegalContent>
