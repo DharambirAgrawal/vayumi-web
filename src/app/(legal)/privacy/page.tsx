@@ -25,8 +25,10 @@ export default function PrivacyPage() {
             email address you give us when you join the waitlist. We don&rsquo;t
             use cookies, trackers, or third-party analytics on this site. We
             don&rsquo;t sell, rent, or share your information with anyone. And
-            the Vayumi app is designed so your voice, meetings, and notes
-            are processed on your device and never uploaded to our servers.
+            the Vayumi app is designed so your voice and meeting audio are
+            processed on your device and never uploaded. If you sign in, your
+            meeting notes and reminders sync across your devices, encrypted in
+            transit.
           </p>
         </LegalSection>
 
@@ -46,12 +48,14 @@ export default function PrivacyPage() {
           </p>
           <p>
             <strong>The Vayumi app (when it launches).</strong> Vayumi
-            runs its AI model on your device. Voice input, meeting audio and
-            transcripts, and notes are processed locally and stay on your
-            device, encrypted with AES-256. Lightweight items such as
-            reminders may sync across your devices only if you choose to sign
-            in — that sync uses the account credentials you provide and
-            nothing else.
+            runs its AI model on your device. Voice input and meeting audio are
+            processed locally and stay on your device, encrypted with AES-256 —
+            they are never uploaded. If you choose to create an account and sign
+            in, your text records — meeting notes (transcripts and summaries)
+            and reminders — sync across your devices so you can reach them
+            anywhere; that sync uses the account credentials you provide, is
+            encrypted in transit, and is never sold or shared. Stay signed out
+            and nothing syncs.
           </p>
         </LegalSection>
 

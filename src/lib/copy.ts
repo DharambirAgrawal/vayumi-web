@@ -33,7 +33,7 @@ export const hero = {
   eyebrow: "On-device AI assistant",
   headline: "Your AI. Your phone.\nNobody else.",
   subhead:
-    "Vayumi talks, takes notes, and runs your day like any assistant — except the intelligence lives inside your phone. Nothing is uploaded. Nothing is sold.",
+    "Vayumi talks, takes notes, and runs your day like any assistant — except the intelligence lives inside your phone. Your voice and audio never leave it. Nothing is sold.",
   cta: "Join the waitlist",
   scrollHint: "Scroll to see how",
 };
@@ -54,8 +54,8 @@ export const leak = {
 
 /* --- Scene 3: The Flip --- */
 export const flip = {
-  headline: "Meet Vayumi.\nNothing leaves. Ever.",
-  sub: "A local AI brain and AES-256 encryption mean your voice, meetings, and notes are processed and stored right where they belong. Your phone is the only server Vayumi needs.",
+  headline: "Meet Vayumi.\nYour voice never leaves.",
+  sub: "A local AI brain and AES-256 encryption mean your voice and meeting audio are processed and stored right on your phone. Your notes and reminders sync only when you sign in — encrypted in transit.",
   lockLabel: "ENCRYPTED · ON-DEVICE",
 };
 
@@ -94,7 +94,7 @@ export const features = [
 /* --- Scene 5: Recap --- */
 export const recap = {
   counter: "0",
-  counterLabel: "bytes sent to the cloud today",
+  counterLabel: "bytes of your voice or audio sent to the cloud",
   headline: "Powerful. Private. Yours.",
   sub: "Everything a cloud assistant does. None of the trade-offs.",
 };
@@ -151,8 +151,8 @@ export const faqIntro =
 
 export const faq = [
   {
-    q: "Is my data really never uploaded?",
-    a: "Correct. Vayumi runs a language model directly on your phone, so your conversations, voice, and meeting audio are processed locally. Meeting audio is encrypted with AES-256 and stays on your device. Only lightweight items like reminders sync — and only if you're signed in.",
+    q: "What stays on my phone, and what syncs?",
+    a: "Your conversations, voice, and meeting audio are processed by an on-device AI and never leave your phone — meeting audio is encrypted with AES-256 and stays local. If you sign in, your text records — meeting notes (transcript and summary) and reminders — sync across your devices, encrypted in transit. Stay signed out and nothing syncs at all.",
   },
   {
     q: "Does it work without internet?",
