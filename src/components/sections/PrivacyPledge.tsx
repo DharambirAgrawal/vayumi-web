@@ -34,9 +34,9 @@ export function PrivacyPledge() {
             transition={{ duration: 0.6, delay: 0.05 }}
             className="font-display mt-5 text-4xl leading-[1.05] sm:text-6xl"
           >
-            Nothing leaves
+            Your voice &amp; audio
             <br />
-            your phone. <span className="font-display-italic text-coral">Ever.</span>
+            never leave. <span className="font-display-italic text-coral">Ever.</span>
           </motion.h2>
 
           <motion.p

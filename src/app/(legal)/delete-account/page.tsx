@@ -24,9 +24,9 @@ export default function DeleteAccountPage() {
             Open Vayumi, go to <strong>Settings</strong>, tap your profile
             card at the top, then tap <strong>Delete account</strong> and
             confirm. This permanently deletes your account and everything
-            tied to it — reminders, meeting notes, settings, and any signed-in
-            sessions — right away. There is no recovery window, so make sure
-            you&rsquo;re ready before confirming.
+            tied to it right away, including your reminders, meeting notes,
+            settings, and any signed-in sessions. There is no recovery window,
+            so make sure you&rsquo;re ready before confirming.
           </p>
         </LegalSection>
 
@@ -41,11 +41,13 @@ export default function DeleteAccountPage() {
 
         <LegalSection heading="What gets deleted">
           <p>
-            Deleting your account removes your profile, reminders, meeting
-            recordings/transcripts/summaries stored with us, app settings,
-            and any signed-in sessions. Voice and meeting audio that only
-            ever lived on your device (the default) is removed simply by
-            deleting the app.
+            Deleting your account permanently removes everything tied to it on
+            our servers: your profile, Life trackers and entries, saved memory,
+            reminders, meeting transcripts and summaries, app settings, and any
+            signed-in sessions. It also wipes the copy on the device you delete
+            from, including the encrypted meeting audio and scanned photos that
+            only ever lived there. The on-device AI model itself is a shared
+            download, and you can remove it any time from Settings.
           </p>
         </LegalSection>
 
