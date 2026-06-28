@@ -27,8 +27,8 @@ export default function PrivacyPage() {
             don&rsquo;t sell, rent, or share your information with anyone. And
             the Vayumi app is designed so your voice and meeting audio are
             processed on your device and never uploaded. If you sign in, your
-            meeting notes and reminders sync across your devices, encrypted in
-            transit.
+            text records — Life tracker entries, meeting notes, and reminders —
+            sync across your devices, encrypted in transit.
           </p>
         </LegalSection>
 
@@ -50,12 +50,14 @@ export default function PrivacyPage() {
             <strong>The Vayumi app (when it launches).</strong> Vayumi
             runs its AI model on your device. Voice input and meeting audio are
             processed locally and stay on your device, encrypted with AES-256 —
-            they are never uploaded. If you choose to create an account and sign
-            in, your text records — meeting notes (transcripts and summaries)
-            and reminders — sync across your devices so you can reach them
-            anywhere; that sync uses the account credentials you provide, is
-            encrypted in transit, and is never sold or shared. Stay signed out
-            and nothing syncs.
+            they are never uploaded. Photos you scan into a tracker are read by
+            the on-device AI and the images stay on your device too. If you
+            choose to create an account and sign in, your text records — Life
+            tracker entries (such as spending, medications, or habits you log),
+            meeting notes (transcripts and summaries), and reminders — sync
+            across your devices so you can reach them anywhere; that sync uses
+            the account credentials you provide, is encrypted in transit, and is
+            never sold or shared. Stay signed out and nothing syncs.
           </p>
         </LegalSection>
 

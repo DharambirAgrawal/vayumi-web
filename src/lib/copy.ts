@@ -7,7 +7,7 @@ export const site = {
   name: "Vayumi",
   tagline: "The AI that keeps your secrets",
   description:
-    "Vayumi is the on-device AI assistant that listens, remembers, and gets things done — voice, meetings, and reminders — without a single byte ever leaving your phone.",
+    "Vayumi is the on-device AI assistant that actually knows your life — it tracks your spending, meds, habits and more by voice or photo, takes meeting notes, and runs your day, without a single byte of your voice or audio ever leaving your phone.",
 };
 
 /* --- Contact (form, not a public email — keeps inboxes private + spam-free) --- */
@@ -57,6 +57,44 @@ export const flip = {
   headline: "Meet Vayumi.\nYour voice never leaves.",
   sub: "A local AI brain and AES-256 encryption mean your voice and meeting audio are processed and stored right on your phone. Your notes and reminders sync only when you sign in — encrypted in transit.",
   lockLabel: "ENCRYPTED · ON-DEVICE",
+};
+
+/* --- Life: the flagship "your AI knows your life" feature --- */
+export const life = {
+  eyebrow: "The flagship",
+  headline: "An AI that actually\nknows your life.",
+  sub: "Most assistants forget you the moment the chat ends. Vayumi remembers — it keeps living trackers for your spending, meds, sleep, workouts, anything — and fills them in for you. Just talk, or snap a photo. It's your second memory, and it lives on your phone.",
+  // The on-device superpowers that make Life different.
+  pillars: [
+    {
+      id: "log",
+      title: "Logs it for you",
+      body: "“I spent $40 on groceries.” “Took my vitamin D.” Vayumi understands and files it in the right tracker — creating one if it doesn't exist yet. No forms, no tapping.",
+    },
+    {
+      id: "see",
+      title: "Reads your photos",
+      body: "Snap a receipt, a medicine label, or a meal. The on-device AI reads it and logs the details — the photo itself never leaves your phone.",
+    },
+    {
+      id: "remember",
+      title: "Remembers you",
+      body: "It keeps a small, curated memory of the things that matter — your coffee order, your car, your routines — so answers feel personal, not generic.",
+    },
+    {
+      id: "ask",
+      title: "Answers anything",
+      body: "“How much did I spend this week?” “When did I last take ibuprofen?” Vayumi reads your own data and answers instantly — math and all.",
+    },
+  ],
+  // Example trackers shown in the visual.
+  trackers: [
+    { name: "Spending", icon: "card", stat: "$420 this week", tone: "teal" },
+    { name: "Medicine", icon: "pill", stat: "2 doses today", tone: "brand" },
+    { name: "Sleep", icon: "moon", stat: "7.2h avg", tone: "blue" },
+    { name: "Workouts", icon: "dumbbell", stat: "4 this week", tone: "amber" },
+  ],
+  syncNote: "Yours alone — synced encrypted across your devices when you sign in, never sold, never trained on.",
 };
 
 /* --- Scene 4: Feature reveals (orb morphs) --- */
@@ -131,8 +169,8 @@ export const howItWorks = {
     },
     {
       n: "03",
-      title: "It stays with you",
-      body: "Notes, transcripts, and reminders are encrypted and kept on your device. Nothing leaves unless you say so.",
+      title: "It remembers",
+      body: "Your trackers, notes, transcripts, and reminders are encrypted and kept on your device — building an AI that knows your life. Nothing leaves unless you say so.",
     },
   ],
 };
@@ -151,8 +189,12 @@ export const faqIntro =
 
 export const faq = [
   {
+    q: "How does Vayumi “know my life”?",
+    a: "Vayumi keeps living trackers — spending, meds, sleep, workouts, or anything you want — and fills them in from plain conversation or a photo. Say “I spent $30 on lunch” or snap a receipt, and it logs the details and answers questions later like “how much did I spend this week?”. All of it is understood by the AI running on your device, so the raw photos and audio never leave your phone.",
+  },
+  {
     q: "What stays on my phone, and what syncs?",
-    a: "Your conversations, voice, and meeting audio are processed by an on-device AI and never leave your phone — meeting audio is encrypted with AES-256 and stays local. If you sign in, your text records — meeting notes (transcript and summary) and reminders — sync across your devices, encrypted in transit. Stay signed out and nothing syncs at all.",
+    a: "Your conversations, voice, meeting audio, and any photos you scan are processed by an on-device AI and never leave your phone — meeting audio is encrypted with AES-256 and stays local. If you sign in, your text records — Life tracker entries, meeting notes (transcript and summary), and reminders — sync across your devices, encrypted in transit. Stay signed out and nothing syncs at all.",
   },
   {
     q: "Does it work without internet?",
@@ -177,6 +219,7 @@ export const footer = {
   tagline: "The AI that keeps your secrets.",
   links: {
     product: [
+      { label: "Life", href: "/#life" },
       { label: "Features", href: "/#features" },
       { label: "How it works", href: "/#how" },
       { label: "FAQ", href: "/#faq" },
@@ -193,6 +236,7 @@ export const footer = {
 /* --- Navbar --- */
 export const nav = {
   links: [
+    { label: "Life", href: "/#life" },
     { label: "How it works", href: "/#how" },
     { label: "Features", href: "/#features" },
     { label: "FAQ", href: "/#faq" },
